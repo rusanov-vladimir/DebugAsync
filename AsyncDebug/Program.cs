@@ -23,7 +23,7 @@ namespace AsyncDebug {
 /*5*/ {
 /*6*/     public static void Main() {
 /*7*/         Console.WriteLine(""Press Enter"");Console.ReadLine();
-/*8*/         var instance = new Instance();
+/*8*/         var instance = new Instance(); //<------------------Breaks here
 /*9*/         Console.WriteLine(""Executing method Start""); instance.Start().Wait(); Console.WriteLine(""Executed"");
 /*10*/    }
 /*11*/ }
@@ -116,7 +116,7 @@ namespace AsyncDebug {
         }
 
         private static void SetBreakpointOnStartMethod() {
-            _engine.Processes.Active.Breakpoints.CreateBreakpoint("MyDocument.cs", 10);
+            _engine.Processes.Active.Breakpoints.CreateBreakpoint("MyDocument.cs", 9);
             _engine.Processes.Active.Breakpoints.CreateBreakpoint("MyDocument.cs", 16);
             //_engine.Processes.Active.Breakpoints.CreateBreakpoint("MyProgram", "Instance", "Start", 0); //setting bp inside rewritten method
         }
